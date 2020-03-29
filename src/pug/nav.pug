@@ -1,0 +1,6 @@
+nav.nav
+	ul.nav__list 
+		- var navItems = [{title: 'Главная',href: '#'}, {title: 'Обо мне',href: '#'}, {title: 'навыки',href: '#'}, {title: 'работы',href: '#'}, {title: 'отзывы',href: '#'}, {title: 'связаться',href: '#'}]
+			each navItem in navItems
+				li.nav__item
+					a.nav__link(href=`${navItem.href}`) #{navItem.title}

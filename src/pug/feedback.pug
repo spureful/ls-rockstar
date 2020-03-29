@@ -1,0 +1,17 @@
+.feedback
+	h3.section-title.section-title--white.feedback__title
+	
+	form.feedback__form#feedback-form
+		.feedback__row
+			label.feedback__lbl
+				span.feedback__input-title Введите ваше имя
+				input.feedback__input(type='text' placeholder="Ковальчук Дмитрий")#feedback-name
+			label.feedback__lbl
+				span.feedback__input-title Введите ваш email
+				input.feedback__input(type='text' placeholder="loftschool@study.com")#feedback-email
+		.feedback__textarea
+			.label.feedback__lbl
+				span.feedback__input-title Сообщение к письму
+				textarea.feedback__input.feedback__input--ta( placeholder="Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса")#feedback-mes
+		button.feedback__btn Отправить
+	

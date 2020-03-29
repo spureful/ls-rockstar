@@ -1,0 +1,18 @@
+include ./socials.pug
+footer.footer
+	.container.container--footer
+		.footer__row
+			.footer__year © 2019
+			.footer__name Anna Sysoeva
+			.footer__nav
+				include ./nav
+		.footer__row.footer__row--bottom
+			.footer__col.footer_col--first
+				.footer__text Личный сайт веб-разработчика
+			.footer__col
+				.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+				.footer__socials
+					+socials('footer')
+			.footer__col
+				.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+				.footer__cite Martin Golding	

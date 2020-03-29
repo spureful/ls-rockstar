@@ -1,0 +1,23 @@
+section.rew
+	.container
+		.rew__header
+			h2.section-title.section-title--white.rew__title  Что обо мне говорят
+			.rew__arrows
+				button.rew__arrow.rew__arrow--left(type='button') &lt;
+				button.rew__arrow.rew__arrow--right(type='button') &gt;
+				
+		.rew__slider
+			ul.rew__list
+			- var slideContent = [{name: 'Ковальчук Дмитрий', position: 'Основатель Loftschool', text: 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', img: '1'}, {name: 'Владимир Сабанцев', position: 'Преподаватель', text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', img: '2'}, {name: 'Ковальчук Дмитрий', position: 'Основатель Loftschool 2 ', text: ' 2Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', img: '1'}, {name: 'Владимир Сабанцев 2', position: ' 2 Преподаватель', text: 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', img: '2'}]
+			each slide in slideContent
+				li.rew__slide
+					.rew__text.text #{slide.text}
+					.rew__row
+						.rew__img-wrap
+							+image(`rew/user-${slide.img}.jpg`, 'rew__img')
+						.rew__content
+							h3.rew__name #{slide.name}
+							h4.rew__position #{slide.position}
+							
+		include ./feedback
+		
