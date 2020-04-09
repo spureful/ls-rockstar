@@ -1,24 +1,89 @@
 section.works
 	.container.container--works
-		.works__col.works__col-left
-			.works__slider
-				img(src="" alt="work").works__img
-				.works__control
-					ul.works__paggination
-						-var works = [1, 2, 3, 4]
-						each work in works
-							li.works__paggination-item
-								+image(`works/work-${work}.jpg`, 'works__paggination-img')
-					.works__arrows
-						button(type='button').works__arrow.works__arrow--next &gt;
-						button(type='button').works__arrow.works__arrow--prew &lt;
-		.works__col.works__col-right
+		h2.secion-title.works__title.secion-title--dark Мои работы
+		#works-block
 		
-			ul.works__tags
-			- var tags = ['HTML', 'CSS', 'Javascript']
-			each tag in tags
-				li.works__tag #{tag}
-			h2.section-title.works__title Сайт школы образования
-			.works__text.text.text--dark Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-			a.works__link(href='#') Посмотреть сайт
+script(type="text/x-template")#works__row
+	.works__row
+		//left
+		side-left(
+			:dataWorks="dataWorks"
+			:currentImg="currentslide.photo"
+			:currentslide="currentslide"
+			@slide="btnSlide"
+			
+		)
+		
+		
+		
+		//right
+		side-right(
+			:currentInfo="currentslide"
+		)
+
+
+//left
+script(type="text/x-template")#works__left
+	.works__col.works__col-left
+		
+		.works__slider
+			//image
+			big-img(
+				:currentImg="currentImg"
+			)
+				
+			.works__control
+				//paggination
+				paggination(
+					:dataPags="dataWorks"
+					:currentslide="currentslide"
+				)
+			//arrows
+			arrows( @slide="direction => $emit('slide', direction)")
+
+//right
+script(type="text/x-template")#works__right
 	
+	.works__col.works__col-right
+		
+		.works__right-num {{currentInfo.id}}
+				
+		.works__right-row
+			//tags
+			tags(
+				:tags="tagsArray"
+			)
+					
+			.works__right-col
+				
+				h2.section-title.works__title  {{currentInfo.title}}
+				.works__text.text.text--grey  {{currentInfo.desc}}
+				a.works__link(:href="currentInfo.link") Посмотреть сайт
+
+//image
+script(type="text/x-template")#works__image
+	img(:src="dataUrl+currentImg").works__img
+	
+	
+//paggination
+script(type="text/x-template")#works__paggination
+	ul.works__paggination
+		li.works__paggination-item(
+			v-for="dataPag in dataPags" 
+			:class="{active: dataPag.id  === currentslide.id}"
+		) 
+			
+			img(:src="dataUrl+dataPag.photo").works__paggination-img
+			
+						
+//arrows
+script(type="text/x-template")#works__arrows
+	.works__arrows
+		button(type='button' v-on:click.prevent="$emit('slide', 'next')").works__arrow.works__arrow--next &gt;
+		button(type='button' v-on:click.prevent="$emit('slide', 'prev')").works__arrow.works__arrow--prew &lt;
+		
+//tags
+script(type="text/x-template")#works__tags
+	ul.works__tags 
+	
+		li.works__tag(v-for="tag in tags") {{tag}}

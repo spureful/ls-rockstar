@@ -1,15 +1,39 @@
 section.skills
-	.skills__container
-		h2.secion-title.skills__title Чем я могу быть полезна вам
-		.skills__text.text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-		ul.skills__list 
-			- var skills = [{title: 'Front-end', items: ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']}, {title: 'Workflow', items: ['GIT', 'Terminal', 'Gulp', 'Webpack']}]
+
+	.container.container--skills
+		+image('skills/guitar.png', 'skills__guitar')
+        
+		.skills__container
+			h2.secion-title.skills__title.secion-title--dark Чем я могу быть полезна вам
+			.skills__text.text.text--dark Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+			#skills-block
+            
+script(type="text/x-template")#skills-list
+	
+	ul.skills__list 
+		li.skills__item(v-for="dataSkill in dataSkills")
+			skill-item(
+				:dataSkill="dataSkill"
+			)
+			
 		
-			each skill in skills
-				li.skills__item
-					h3.skills__item-title #{skill.title}
-					ul.skills__item-list
-					each item in skill.items
-							li.skills__subitem
-								h4.skills__subtitle #{item}
-								.skills__circle
+script(type="text/x-template")#skills-item
+	.skills__row
+		h3.skills__item-title {{dataSkill.skillsGroup}}
+		ul.skills__item-list
+			li.skills__subitem(v-for="skill in dataSkill.skills")
+				skill(
+					:skill="skill"
+				)
+				
+		
+script(type="text/x-template")#skill
+	
+	.skills__circle
+		h4.skills__subtitle {{skill.title}}
+		svg(viewBox="0 0 100 100").skill__circle-shape
+			circle(cx="50" cy="50" r="40").skill__circle.skill__circle_under
+			circle(cx="50" cy="50" r="40" ref="svg-circle" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_abov
+			linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+				stop(offset="0%" stop-color="#4d87ee")
+				stop(offset="100%" stop-color="blue")

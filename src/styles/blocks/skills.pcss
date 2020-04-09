@@ -1,0 +1,89 @@
+.skills {
+	background: url(../images/content/skills/text.svg);
+	background-repeat: no-repeat;
+	position: relative;
+
+	/* &:after {
+        content: '';
+        width: 530px;
+        height: 1000px;
+        position: absolute;
+        left: 150px;
+        top: -400px;
+        background-image: url(../images/content/skills/guitar.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+
+    } */
+	display: flex;
+}
+
+.container--skills {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.skills__guitar {
+	margin-top: -400px;
+	flex-shrink: 0;
+	margin-right: 50px;
+
+}
+
+
+.skills__container {
+	padding-top: 50px;
+
+}
+
+.skills__text {
+	margin-bottom: 50px;
+}
+
+.skills__item-title {
+	margin-bottom: 30px;
+	font-weight: 700;
+}
+
+.skills__item-list {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.skills__circle {
+	width: 154px;
+	height: 154px;
+	position: relative;
+
+}
+
+.skills__subtitle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+}
+
+.skill__circle-shape {
+	fill: #fff;
+	
+}
+
+.skill__circle_under {
+//	stroke-width: 10px;
+	stroke: #ccc;
+	width: 100%;
+}
+
+.skill__circle_abov {
+		stroke-width: 5px;
+	stroke-dasharray: 251;
+	width: 100%;
+}

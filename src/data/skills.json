@@ -1,0 +1,41 @@
+[
+  {
+    "skillsGroup": "Frontend",
+    "skills": [
+		{"title":  "html5", 
+		"percent": 30}, 
+		{"title":  "css3", 
+		"percent": 50}, 
+		{"title":  "JavaScript & jQuery", 
+		"percent": 30},
+		{"title":  "JavaScript & jQuery", 
+		"percent": 90}
+      ]
+  },
+  {
+    "skillsGroup": "Backend",
+    "skills": [
+		{"title":  "Php", 
+		"percent": 30}, 
+		{"title":  "mySql", 
+		"percent": 60}, 
+		{"title":  "JNode.js & npm", 
+		"percent": 30},
+		{"title":  "Mongo.db", 
+		"percent": 70}
+      ]	 
+  },
+	{
+    "skillsGroup": "Workflow",
+    "skills": [
+		{"title":  "GIT", 
+		"percent": 60}, 
+		{"title":  "Terminal", 
+		"percent": 60}, 
+		{"title":  "Gulp", 
+		"percent": 40},
+		{"title":  "MWebpack", 
+		"percent": 10}
+      ]	 
+  }
+]
