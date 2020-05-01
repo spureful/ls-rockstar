@@ -3,5 +3,5 @@ Materials
 .DS_Store
 .vscode
 .idea
-dist
+
 *.log
