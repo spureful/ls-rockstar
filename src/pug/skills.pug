@@ -4,7 +4,7 @@ section.skills
 		+image('skills/guitar.png', 'skills__guitar')
         
 		.skills__container
-			h2.secion-title.skills__title.secion-title--dark Чем я могу быть полезна вам
+			h2.section-title.skills__title.section-title--dark Чем я могу быть полезна вам
 			.skills__text.text.text--dark Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 			#skills-block
             
@@ -34,6 +34,7 @@ script(type="text/x-template")#skill
 		svg(viewBox="0 0 100 100").skill__circle-shape
 			circle(cx="50" cy="50" r="40").skill__circle.skill__circle_under
 			circle(cx="50" cy="50" r="40" ref="svg-circle" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_abov
-			linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-				stop(offset="0%" stop-color="#4d87ee")
-				stop(offset="100%" stop-color="blue")
+			defs
+				linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+					stop(offset="0%" stop-color="#4d87ee")
+					stop(offset="100%" stop-color="blue")
