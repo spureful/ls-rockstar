@@ -20,7 +20,7 @@ import rewAddComp from './rewAdd.vue';
 			}
 		}
 	}
- the end
+
 </script>
 
 
