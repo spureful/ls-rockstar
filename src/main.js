@@ -7,3 +7,5 @@ import "./scripts/skills";
 import "./scripts/works";
 import "./scripts/rew";
 import "./scripts/login";
+import "./scripts/promo-prlx";
+import "./scripts/openMenu";

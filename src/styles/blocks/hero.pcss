@@ -1,9 +1,17 @@
 .hero {
 	color: #fff;
 	padding-bottom: 15px;
-	margin-bottom: 50px;
-	height: 100vh;
+//	margin-bottom: 50px;
+	height: 90vh;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex; flex-direction: column;
 	
+	@include tabletsb {
+		height: 100vh;
+	}
 
 }
 
@@ -18,15 +26,26 @@
 	align-items: center;
 	flex-direction: column;
 	min-height: 650px;
+	flex: 1;
 }
 
+.hero__title-wrap {
+	font: 1px;
+	height: 90%;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
 .hero__title {
 	color: #fff;
 	font-size: 62px;
 	font-weight: 800;
 	width: 30%;
 	line-height: 1;
-	margin-top: 15%;
+
 	
 }
 

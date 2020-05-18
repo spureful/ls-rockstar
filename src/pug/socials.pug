@@ -1,5 +1,5 @@
 mixin socials(modif)
-	ul.socials
+	ul.socials(class=`${modif}__socials`)
 		- var socials = [{name: 'insta'}, {name: 'vk'}, {name: 'github'}]
 		each social in socials
 			li.socials__item

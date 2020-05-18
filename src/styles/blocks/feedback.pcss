@@ -1,5 +1,9 @@
 .feedback {
 	color: #fff;
+	
+	@include tabletsb {
+		text-align: center;
+	}
 }
 
 
@@ -10,6 +14,14 @@
 
 .feedback__form {
 	max-width: 50%;
+	
+	@include desktop {
+		max-width: 70%;
+	}
+	
+	@include tabletsb {
+		margin: 0 auto;
+	}
 }
 
 .feedback__row {

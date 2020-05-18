@@ -27,3 +27,10 @@ $ npm run имя_скрипта
 ```sh
 $ yarn имя_скрипта
 ```
+
+
+поменять переменную publickpath
+
+git subtree push --prefix dist origin gh-pages
+
+https://spureful.github.io/ls-rockstar/dist/

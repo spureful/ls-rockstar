@@ -25,13 +25,17 @@
 					) Отзывы
 		.main__block
 			router-view
+			
 </template>
+
 
 
 <script>
 	
+
 	export default {
 		components: {
+		
 			
 		},
 		data() {

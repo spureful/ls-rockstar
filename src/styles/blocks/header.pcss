@@ -1,5 +1,6 @@
 .header {
 	padding-top: 70px;
+	
 }
 .container--header {
 	display: -webkit-flex;
@@ -10,10 +11,20 @@
 	justify-content: space-between;
 	color: #fff;
 	align-items: center;
+	
+	@include tabletsb {
+		
+	}
 }
 
 .logo__content {
 text-transform: uppercase;
 font-weight: 800;
 font-size: 36px;	
+}
+
+.header__socials {
+	@include tabletsb {
+		margin-left: 50%;
+	}
 }

@@ -18,7 +18,7 @@
 </script>
 
 
-<style lang="pcss">
+<style lang="pcss" scoped>
 
 
 </style>

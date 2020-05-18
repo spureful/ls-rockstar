@@ -5,86 +5,77 @@
 		
 		button(type="button" @click.prevent="addNewCategory").about__add-group Добавить группу
 		
-	ul.about__liist
-		li.about__item(v-for="group in allGroups")
-			.about__title-row(v-if="group.edit")
-			
-				input(type="text" placeholder="Название новой группы" v-model="group.title" ).input__title-group.admin__input
-				.btn__row
-					button(type="button" @click.prevent="changeEdit(group.title)" ).btn-ok
-					button(type="button" @click.prevent="deleteThisGroup(group.id)").btn-cancel
-			.about__title-row(v-else)
-					input(type="text" :value="group.category" disabled).input__title-group.admin__input
-					button(type="button" @click.prevent="toggleEdit(group.edit)").btn-edit
-			ul.about__content
-				li.about__content-item()
-					aboutItemComp
-			.about__new-skill(v-if="!group.edit")
-				input(type="text" placeholder="Новый навык" disabled).admin__input.about__skill
-				label.abuot__percent
-					input(placeholder="100" min="0" max="100" disabled).admin__input
-				button(type="button" disabled).admin__add.about__add +
-			.about__new-skill(v-else)
-				input(type="text" placeholder="Новый навык" ).admin__input.about__skill
-				label.abuot__percent
-					input(placeholder="100" min="0" max="100"  ).admin__input
-				button(type="button" ).admin__add.about__add +
-	
+	ul.about__list
 		
-	
+		li.about__item(v-for="skill in allGroups" :key="skill.id")
+			aboutItemComp(:skill="skill")
+//
+//		li(v-for="group in allGroups :key="group.id")
+//			aboutItemComp
+
+
 </template>
 
 
 <script>
-	import aboutItemComp from './abuotItem.vue';
+	import aboutItemComp from './aboutItem.vue';
+	import aboutItemRowComp from './abuotItemRow.vue';
 	import {mapGetters, mapActions} from "vuex";
 	
 	export default {
 		components: {
-			aboutItemComp
+			aboutItemComp,
+			aboutItemRowComp
 		},
 		data() {
 			return{
 				title: "",
-				newGroup: {	
-					edit: true
-			}
+				groupEditBtn: true,
+				allGroups: [
+					{id: 1, title: 'title1', perc: 20},
+					{id: 2, title: 'title2', perc: 50},
+					{id: 3, title: 'title3', perc: 60},
+					{id: 4, title: 'title4', perc: 70},
+					{id: 5, title: 'title5', perc: 80}
+					
+				]
+			
 			}
 		}, 
 		
 		created() {
-			this.fetchGroup();
-			console.log(this.allGroups)		
+//			this.fetchGroup();
+//			console.log(this.allGroups)		
 			
 		},
 		computed: {
-			...mapGetters(['allGroups',  'groupTitle']),
+//			...mapGetters(['allGroups',  'groupTitle']),
 		
 			
 		} ,
 		
 		methods: {
-		
-			deleteThisGroup(item) {
-				this.deleteGroup(item);
-				this.fetchGroup();
-			},
-			
-			addNewCategory() {
-				this.allGroups.unshift(this.newGroup)
-			},
-			
-			toggleEdit(item) {
-				item = !item
-				console.log(this.allGroups)
-			},
-			...mapActions(['fetchGroup', 'addNewGroup', 'changeEdit', 'deleteGroup'])
+//		
+//			deleteThisGroup(item) {
+//				this.deleteGroup(item);
+//				this.fetchGroup();
+//			},
+//			
+//			addNewCategory() {
+//				this.allGroups.unshift(this.newGroup)
+//			},
+//			
+//			toggleEdit(item) {
+//				item = !item
+//				console.log(this.allGroups)
+//			},
+//			...mapActions(['fetchGroup', 'addNewGroup', 'changeEdit', 'deleteGroup'])
 			
 		
 			
 		}, 
 		mounted() {
-			this.fetchGroup();
+//			this.fetchGroup();
 		}
 	}
 
@@ -92,6 +83,12 @@
 
 
 <style lang="pcss" scoped>
+	
+	.test {
+		width: 150px;
+		height: 150px;
+		background-color: red;
+	}
 	.about__row {
 		display: -webkit-flex;
 		display: -moz-flex;
@@ -139,7 +136,7 @@
 		
 		
 	}
-	.about__liist {
+	.about__list {
 		display: -webkit-flex;
 		display: -moz-flex;
 		display: -ms-flex;
@@ -161,60 +158,7 @@
 		}
 	}
 	
-		.about__title-row {
-		display: -webkit-flex;
-		display: -moz-flex;
-		display: -ms-flex;
-		display: -o-flex;
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 30px;
-	}
-
-	.input__title-group {
-		width: 70%;
-
-
-	}
-
-	.btn-ok {
-		margin-right: 20px;
-	}
-
-	.about__new-skill {
-		display: -webkit-flex;
-		display: -moz-flex;
-		display: -ms-flex;
-		display: -o-flex;
-		display: flex;
-		justify-content: flex-end;
-		-ms-align-items: center;
-		align-items: center;
-	}
-
-	.abuot__percent {
-		width: 53px;
-		position: relative;
-		margin-right: 20px;
-
-		input {
-			width: 100%;
-		}
-
-		&:after {
-			content: '%';
-			color: #000;
-			opacity: .3;
-			position: absolute;
-
-			right: 0;
-		}
-	}
-
-	.about__skill {
-		margin-right: 10px;
-	}
-
+		
 	
 
 </style>

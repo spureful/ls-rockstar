@@ -12,6 +12,10 @@ const tags = {
 
 const arrows = {
 	template: '#works__arrows',
+	props: {
+		dataPags: Array,
+		currentslide: Object
+	}
 
 }
 
@@ -27,9 +31,6 @@ const paggination = {
 
 		}
 	}
-
-
-
 
 
 }
@@ -70,11 +71,7 @@ const sideRight = {
 		currentInfo: Object
 	},
 
-//	data() {
-//		return {
-//			tagsArray: ''
-//		}
-//	},
+
 	computed: {
 
 		tagsArray() {
@@ -118,21 +115,49 @@ new Vue({
 
 			return this.currentslide = this.dataWorks[this.currentItem];
 
-		},
+		}
 
 
 	},
 	methods: {
+
 		btnSlide(direction) {
 			direction == 'next' ? this.currentItem++ : this.currentItem--
-			this.currentItem < 0 ? this.currentItem = this.dataWorks.length - 1 : this.currentItem;
+			this.currentItem < 0 ? this.currentItem = 0 : this.currentItem;
 
-			this.currentItem > this.dataWorks.length - 1 ? this.currentItem = 0 : this.currentItem;
+			this.currentItem > this.dataWorks.length - 1 ? this.currentItem = this.dataWorks.length - 1 : this.currentItem;
+
+
 
 			this.watchCurItem;
 
+
+			const items = this.$children[0].$children[1].$refs.pagItem;
+			
+			
+
+			if (direction == 'next' && this.currentItem != this.dataWorks.length - 1) {
+				items.appendChild(items.firstElementChild);
+			} else if (direction == 'prev' && this.currentItem != 0) {
+				items.insertBefore(items.lastElementChild, items.firstElementChild);
+			}
 		}
+
+
+
 	}
+
+	//	wathICons() {
+
+	//			console.log(pagSlide)
+
+	//			for (let pagItem of pagSlide ) {
+	//				if (pagItem.classList.contains('active')) {
+	//				pagItem.parentNode.appendChild(pagItem);
+	//			}
+	//			}
+	//	}
+	//}
 
 
 })

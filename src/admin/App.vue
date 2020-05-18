@@ -33,8 +33,19 @@
 		background-color: #fff;
 	}
 
-	a {
+	h1, h2, h3 ,h4, h5, h6 {
+		padding: 0;
+		margin: 0;
+	}
+	
+	a, button {
+		transition: .7s;
+		padding: 0;
 		cursor: pointer
+	}
+	
+	*, *:after, *:before {
+		box-sizing:border-box;
 	}
 	
 	ul {
@@ -65,6 +76,7 @@
 		font-size: 21px;
 		font-weight: 700;
 		color: #414c63;
+		padding: 20px 0;
 	}
 
 
@@ -84,6 +96,7 @@
 		align-items: center;
 		font-size: 20px;
 		border: none;
+		flex-shrink: 0;
 	}
 
 	.admin__input {
@@ -92,6 +105,11 @@
 		font-size: 18px;
 		color: #414c63;
 		padding-bottom: 10px;
+		
+		&:disabled  {
+			background-color: transparent;
+			border-bottom: none;
+		}
 	}
 
 
@@ -130,6 +148,76 @@
 	.btn-delete {
 		background-image: url(../images/content/admin/delete.png);
 		opacity: .6;
+	}
+
+	
+	.admin-btn {
+		padding: 15px 35px;
+		background: linear-gradient(to right, #1a54df, #3f35cb );
+		border-radius: 20px;
+		color: #fff;
+		text-transform: uppercase;
+		
+		-webkit-transition: .7s;
+		-o-transition: .7s;
+		transition: .7s;
+		
+		&:hover {
+			background: linear-gradient(to right, #3f35cb, #1a54df );
+		}
+		
+	
+	}
+	
+	.admin-btn-w {
+		color: #414c63;
+		background-color: transparent;
+		border: none;
+		padding-right: 30px;
+		background-repeat: no-repeat;
+		
+		transition: .7s;
+		
+		%:hover  {
+			transform: scale(1.1);
+		}
+
+	}
+	
+	.admin-edit-w {
+		background: svg-load('pencil.svg', fill=$text-color, width=100%, height=100%);
+		background-repeat: no-repeat;
+		background-position: center right;
+	}
+	
+	.admin-delete-w {
+		background: svg-load('remove.svg', fill='red', width=100%, height=100%);
+		background-repeat: no-repeat;
+		background-position: center right;
+	}
+	
+		.btn-add-cancel {
+		border: none;
+		background-color: transparent;
+		margin-right: 10px;
+		color: #383bcf;
+		
+		-webkit-transition: .7em;
+		-o-transition: .7em;
+		transition: .7em;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+		
+	}
+
+	.btns__row {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
 	}
 
 </style>

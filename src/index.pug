@@ -11,13 +11,19 @@ html(lang="ru")
 		.wrapper
 			.maincontent
 				.promo-wrap
+					include ./pug/parallax
+				
 					include ./pug/hero
 					include ./pug/about
 				include ./pug/skills
 				include ./pug/works
 				include ./pug/rew
 				include ./pug/login
+				
 				include ./pug/footer
+				
+		block vars 
+			- var currentPage = '#main'
 			
 				
 				

@@ -1,6 +1,11 @@
-nav.nav
-	ul.nav__list 
-		- var navItems = [{title: 'Главная',href: '#'}, {title: 'Обо мне',href: '#'}, {title: 'навыки',href: '#'}, {title: 'работы',href: '#'}, {title: 'отзывы',href: '#'}, {title: 'связаться',href: '#'}]
-			each navItem in navItems
-				li.nav__item
-					a.nav__link(href=`${navItem.href}`) #{navItem.title}
+mixin nav(modif)
+	nav.nav(class=`nav--${modif}`)
+		button.nav__btn(type="button")
+			span.nav__btn-line
+		.nav__block
+			ul.nav__list
+				- var navItems = [{title: 'Главная', href: '#main', id:'#main'}, {title: 'Обо мне',href: '#about'}, {title: 'навыки',href: '#siklls'}, {title: 'работы',href: '#works'}, {title: 'отзывы',href: '#rew'}, {title: 'связаться',href: '#feedback'}]
+					each navItem in navItems
+						li.nav__item
+							a.nav__link(href=`${navItem.href}` class={active: `${navItem.id}` === `${navItem.href}`}) #{navItem.title}
+			+socials('nav')

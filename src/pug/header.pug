@@ -1,8 +1,9 @@
 include ./socials.pug
+include ./nav.pug
 header.header
 	.container.container--header
 		.logo
 			.logo__content ас
-		include ./nav.pug	
+		+nav('header')
 		+socials('header')
 		

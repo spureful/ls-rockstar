@@ -42,6 +42,14 @@
 	width: 60%;
 	margin-bottom: 100px;
 	overflow: hidden;
+	
+	@include desktop {
+		width: 80%;
+	}
+	
+	@include tabletsb {
+		margin: 0 auto 30px;
+	}
 }
 
 .rew__list {
@@ -97,7 +105,7 @@
 		margin-right: 30px;
 		background-color: #fff;
 		flex-shrink: 0;
-		background: svg-load('quote.svg', fill=#1b0e2b, width=100%, height=100%);
+		background: svg-load('quote.svg', fill=#fff, width=100%, height=100%);
 	}
 }
 

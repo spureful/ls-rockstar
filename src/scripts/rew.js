@@ -63,7 +63,9 @@ new Vue({
 			let sumSlidesWidth = 0;
 			let numberToMove = 0
 
+
 			const defineSlider = this.$children[1].$refs.moveSlider;
+						
 			const sliderBlock = this.$refs.sliderBlock;
 			let slidesArr = this.$children[1].$refs.moveSlider.children;
 
@@ -88,7 +90,6 @@ new Vue({
 				indexTest();
 				this.slidesIndex = currentIndex;
 
-				defineSlider.style.transform = `translateX(-${numberToMove} )`;
 
 			}
 
@@ -97,28 +98,28 @@ new Vue({
 				indexTest();
 				this.slidesIndex = currentIndex;
 
-				defineSlider.style.transform = `translateX( -${numberToMove} )`;
+
 			}
 
 			function indexTest() {
 				if (currentIndex >= screenSlides) {
-					currentIndex = 0
+					currentIndex = screenSlides -1
 				}
 				if (currentIndex < 0) {
 					currentIndex = 0
 				}
-				
-				console.log(currentIndex)
+
+
 				numberToMove = 100 * currentIndex + '%';
-				
+
+				defineSlider.style.transform = `translateX(-${numberToMove} )`;
+
 			}
-
-
-
-
 
 		}
 	}
+	
+
 
 
 });

@@ -1,4 +1,4 @@
-section.works
+section.works#works
 	.container.container--works
 		h2.section-title.works__title.section-title--dark Мои работы
 		#works-block
@@ -39,7 +39,11 @@ script(type="text/x-template")#works__left
 					:currentslide="currentslide"
 				)
 			//arrows
-			arrows( @slide="direction => $emit('slide', direction)")
+			arrows( 
+				@slide="direction => $emit('slide', direction)"
+				:dataPags="dataWorks"
+				:currentslide="currentslide"
+				)
 
 //right
 script(type="text/x-template")#works__right
@@ -67,10 +71,11 @@ script(type="text/x-template")#works__image
 	
 //paggination
 script(type="text/x-template")#works__paggination
-	ul.works__paggination
+	ul.works__paggination(ref="pagItem")
 		li.works__paggination-item(
 			v-for="dataPag in dataPags" 
 			:class="{active: dataPag.id  === currentslide.id}"
+			
 		) 
 			
 			img(:src="dataUrl+dataPag.photo").works__paggination-img
@@ -79,8 +84,8 @@ script(type="text/x-template")#works__paggination
 //arrows
 script(type="text/x-template")#works__arrows
 	.works__arrows
-		button(type='button' v-on:click.prevent="$emit('slide', 'next')").works__arrow.works__arrow--next &gt;
-		button(type='button' v-on:click.prevent="$emit('slide', 'prev')").works__arrow.works__arrow--prew &lt;
+		button(type='button' v-on:click.prevent="$emit('slide', 'next')" :class="{active:  currentslide.id < dataPags.length}").works__arrow.works__arrow--next &gt;
+		button(type='button' v-on:click.prevent="$emit('slide', 'prev')" :class="{active:  currentslide.id > 1}").works__arrow.works__arrow--prew &lt;
 		
 //tags
 script(type="text/x-template")#works__tags
