@@ -1,9 +1,0 @@
-#login-form
-
-
-script(type="text/x-template")#login
-	form.login(@submit.prevent="enterLogin()")
-		.login__container
-			input(type="text" v-model="user.name" placeholder="login").login__input#input-login
-			input(type="text" v-model="user.password" placeholder="password").login__input#input-password
-			button(type="submit").login__input#input-password Войти

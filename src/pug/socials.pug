@@ -1,7 +1,0 @@
-mixin socials(modif)
-	ul.socials(class=`${modif}__socials`)
-		- var socials = [{name: 'insta'}, {name: 'vk'}, {name: 'github'}]
-		each social in socials
-			li.socials__item
-				a.socials__link(href='#' class=`socials__link--${modif}`)
-					+icon(`${social.name}`, 'socials__icon')
