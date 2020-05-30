@@ -3,7 +3,7 @@
 		.container.container--header
 			.hero
 				.hero__img-wrap
-					img(alt="ava" src="../../images/content/about/ava.JPG").hero__img
+					img(alt="ava" src="../../../images/content/about/ava.JPG").hero__img
 				.hero__name Анна Сысоева
 				.hero__text Панель администрирования
 			.exit

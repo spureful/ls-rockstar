@@ -3,15 +3,16 @@
 	.about__row
 		h1.admin__title Блок "Обо мне"
 		
-		button(type="button" @click.prevent="addNewCategory").about__add-group Добавить группу
+		button(type="button" @click.prevent="toggleAddForm" v-if="!isShowNewBlock").about__add-group Добавить группу
 		
 	ul.about__list
-		
-		li.about__item(v-for="skill in allGroups" :key="skill.id")
-			aboutItemComp(:skill="skill")
-//
-//		li(v-for="group in allGroups :key="group.id")
-//			aboutItemComp
+		li.about__item(v-if="isShowNewBlock")
+			aboutAddComp(@toggleAddForm="toggleAddForm")
+		li.about__item(v-for="category in categories" :key="category.id")
+			aboutItemComp(
+				:category="category"
+				:skills="filterCategorySkills(category.id)"
+				)
 
 
 </template>
@@ -19,65 +20,61 @@
 
 <script>
 	import aboutItemComp from './aboutItem.vue';
-	import aboutItemRowComp from './abuotItemRow.vue';
-	import {mapGetters, mapActions} from "vuex";
+	import aboutAddComp from './aboutAdd.vue';
+
+	import {mapActions, mapState} from 'vuex';
 	
 	export default {
 		components: {
 			aboutItemComp,
-			aboutItemRowComp
+			aboutAddComp
+
 		},
 		data() {
 			return{
-				title: "",
-				groupEditBtn: true,
-				allGroups: [
-					{id: 1, title: 'title1', perc: 20},
-					{id: 2, title: 'title2', perc: 50},
-					{id: 3, title: 'title3', perc: 60},
-					{id: 4, title: 'title4', perc: 70},
-					{id: 5, title: 'title5', perc: 80}
-					
-				]
-			
+			isShowNewBlock:false,
+						
 			}
 		}, 
 		
-		created() {
-//			this.fetchGroup();
-//			console.log(this.allGroups)		
-			
-		},
 		computed: {
-//			...mapGetters(['allGroups',  'groupTitle']),
+			 ...mapState('about', {
+			categories: state => state.categories
+			}),
+    		...mapState('skills', {
+      		skills: state => state.skills
+			})
 		
 			
 		} ,
 		
 		methods: {
-//		
-//			deleteThisGroup(item) {
-//				this.deleteGroup(item);
-//				this.fetchGroup();
-//			},
-//			
-//			addNewCategory() {
-//				this.allGroups.unshift(this.newGroup)
-//			},
-//			
-//			toggleEdit(item) {
-//				item = !item
-//				console.log(this.allGroups)
-//			},
-//			...mapActions(['fetchGroup', 'addNewGroup', 'changeEdit', 'deleteGroup'])
+			...mapActions('about', ['getCategories']),
+			...mapActions('skills', ['getSkills']),			
 			
-		
+			filterCategorySkills(catid) {
+		  		return this.skills.filter(skill => skill.category === catid);
+		},
+		toggleAddForm() {
+				this.isShowNewBlock = !this.isShowNewBlock
+			}		
 			
 		}, 
-		mounted() {
-//			this.fetchGroup();
+		async created() {
+			
+			try {
+			await this.getCategories();
+    		} catch (e) {
+			}
+			
+			try {
+      			await this.getSkills();
+    		} catch (e) {
+      
+				}
+    		}
 		}
-	}
+	
 
 </script>
 

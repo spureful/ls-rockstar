@@ -1,43 +1,78 @@
 <template lang="pug">
 .work-item
 	.work-item__img-wrap
-		img(src="../../images/content/works/work-1.jpg").work-item__img
+		img(:src="baseURL + dataWork.photo").work-item__img
 		ul.tags
-			li.tag__item html
-			li.tag__item css
+			li.tag__item(v-for="tag in tags") {{tag}}
+			
 	.work-item__container
-		h3.work-item__title Сайт школы образования
-		p.work-item__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-		a(href="#").work-item__link http://loftschool.ru
+		h3.work-item__title {{dataWork.title}}
+		p.work-item__text {{dataWork.description}}
+		a(:href="dataWork.link").work-item__link {{dataWork.link}}
 	
-		.work-item__row(v-if="!buttonsEdit")
-			button(type="btn").admin-edit-w.admin-btn-w Править
-			button(type="btn").admin-delete-w.admin-btn-w Удалить
-		.work-item__row(v-else)
-			button(type="btn").admin-edit-w.admin-btn-w Править
-			button(type="btn").admin-delete-w.admin-btn-w Удалить
+		.work-item__row
+			button(type="btn" @click.prevent='toggleEdit' :disabled="getEditModeState || addMode" ).admin-edit-w.admin-btn-w Править
+			button(type="btn" @click.prevent="removeThisWork").admin-delete-w.admin-btn-w Удалить
+		
 	
 		
 </template>
 
 
 <script>
-	
+	import { mapActions, mapGetters, mapState } from 'vuex';
 	export default {
 		components: {
 			
 		},
+		props: {
+			addMode: Boolean,
+			work: Object
+		},
 		data() {
 			return {
-				dataWorks: {},
-				buttonsEdit: false
+				baseURL: "https://webdev-api.loftschool.com/",
+				tags: [],
+				dataWork: {}
+				
 			}
 		},
-		created() {
+		async created() {
+			 this.tags = await this.work.techs.split(', ');
+			 this.dataWork = await this.work
+	}, 		
+		 computed: {
+			...mapGetters('works', ['getEditModeState']),
+			 
+			...mapState('works', {works: state => state.works}),
+				
+//		 fetchWorks() {
+//				this.dataWork = this.work
+//				
+//				return this.tags = this.dataWork.techs.split(', ');
+//				
+//					
+//			}
+		
+			
+			
+		
+	} , 
+		methods: {
+		...mapActions('works', ['toggleEditMode', 'removeWork']),
+			toggleEdit() {
+			this.toggleEditMode(this.getEditModeState);
+			this.$emit(`getCurrentWork`, this.work)
+			
+		},
+		
+		async removeThisWork() {
+			await this.removeWork(this.dataWork.id)
+		},
+			
 		
 	}
-	} 
-		
+	}
 
 </script>
 
@@ -72,6 +107,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index: 0;
 	}
 	
 	.tags {display: -webkit-flex;
@@ -79,7 +115,11 @@
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
-	flex-wrap: wrap}
+	flex-wrap: wrap;
+		position: relative;
+		z-index: 1;
+	
+	}
 	
 	.tag__item {
 		color: $text-color;

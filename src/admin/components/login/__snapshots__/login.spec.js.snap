@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`На странице есть кнопка Авторизоваться Ищем кнопку авторизации по классу 1`] = `
+<button
+  class="auth__btn auth__submit"
+  type="submit"
+>
+  Авторизоваться
+</button>
+`;
+
+exports[`при клике на кнопку авторизации появляется формa open form 1`] = `
+<form
+  class="login__form auth"
+>
+  <button
+    class="login__close"
+    type="button"
+  />
+  <h2
+    class="auth__title"
+  />
+  <label
+    class="auth__lbl"
+  >
+    <span
+      class="auth__input-title"
+    >
+      Логин
+    </span>
+    <input
+      class="auth__input auth__input--login"
+      required="required"
+      type="text"
+    />
+  </label>
+  <label
+    class="auth__lbl"
+  >
+    <span
+      class="auth__input-title"
+    >
+      Пароль
+    </span>
+    <input
+      class="auth__input auth__input--password"
+      type="password"
+    />
+  </label>
+  <button
+    class="auth__btn auth__submit"
+    type="submit"
+  >
+    Авторизоваться
+  </button>
+</form>
+`;
+
+exports[`форма имеет все необходимые поля есть поле логин 1`] = `
+<input
+  class="auth__input auth__input--login"
+  required="required"
+  type="text"
+/>
+`;
+
+exports[`форма имеет все необходимые поля есть поле пароль 1`] = `
+<input
+  class="auth__input auth__input--password"
+  type="password"
+/>
+`;

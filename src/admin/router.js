@@ -3,23 +3,34 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import worksComp from "./components/works.vue"
-import aboutComp from "./components/about.vue"
-import rewComp from "./components/rew.vue"
+import worksComp from "./components/works/works.vue"
+import aboutComp from "./components/about/about.vue"
+import rewComp from "./components/rew/rew.vue"
+import loginComp from "./components/login/login.vue"
 
 const routes = [
 	{
-		path: "/admin/works",
+		path: "/works",
 		component: worksComp
 	},
 		{
-		path: "/admin",
+		path: "/",
+//		path: "/about",
 		component: aboutComp
 	},
 		{
-		path: "/admin/rew",
+		path: "/rew",
 		component: rewComp
+	},
+			{
+		path: "/login",
+//		path: "/admin",
+		component: loginComp
 	}
 ];
 
-export default new  VueRouter({routes, mode: 'history'});
+
+
+export default new  VueRouter({routes});
+
+//mode: 'history'

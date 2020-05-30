@@ -1,11 +1,12 @@
 <template lang="pug">
 	.add-item
-		button(type="button").add-item__btn
+		button(type="button" @click.prevent="$emit('toggleAdddMode')" :disabled="getEditModeState").add-item__btn
 		.add-item__text(ref="add-item") Добавить
 </template>
 
 
 <script>
+	import {  mapGetters } from 'vuex';
 	export default {
 		components: {
 
@@ -14,7 +15,11 @@
 			return {
 
 			}
-		}
+		},
+		computed: {
+		...mapGetters('works', ['getEditModeState'])
+	}
+		
 	}
 
 </script>

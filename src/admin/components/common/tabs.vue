@@ -1,30 +1,28 @@
 <template lang="pug">
-	main.main
-		.container
-			ul.tabs
-				li.tabs__Item
-					router-link(
-					tag = "a",
-					class="tabs__link"
-					to="/admin"
-					) Обо мне
-					
-				li.tabs__Item
-					router-link(
-					tag = "a",
-					class="tabs__link"
-					to="/admin/works"
-					) Работы
-				
-				li.tabs__Item
-				
-					router-link(
-					tag = "a",
-					class="tabs__link"
-					to="/admin/rew"
-					) Отзывы
-		.main__block
-			router-view
+
+ul.tabs
+	li.tabs__Item
+		router-link(
+		tag = "a",
+		class="tabs__link"
+		to="/"
+		) Обо мне
+
+	li.tabs__Item
+		router-link(
+		tag = "a",
+		class="tabs__link"
+		to="/works"
+		) Работы
+
+	li.tabs__Item
+
+		router-link(
+		tag = "a",
+		class="tabs__link"
+		to="/rew"
+		) Отзывы
+		
 			
 </template>
 
