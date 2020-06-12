@@ -21,13 +21,12 @@ export default {
 	  state.works = state.works.filter(item => item.id !== work)
   },
 	EDIT_WORK: (state, work ) => {
-	state.works = state.works.map(item => item.id === work.id ? work : item)
+	 state.works = state.works.map(item => item.id === work.id ? work : item)
 }, 
 	  EDIT_MODE(state, mode) {
 		  state.editMode = mode
 	  }
 	  
-
 
   },
   actions: {
@@ -73,9 +72,7 @@ export default {
 
   },
 getters: {
-	getEditModeState: state =>  state.editMode,
-	
-	
+	getEditModeState: state =>  state.editMode	
 	
 }
 }

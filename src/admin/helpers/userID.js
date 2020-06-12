@@ -5,3 +5,5 @@ export const userId = (async function() {
 	 const userID = response.data.user.id;
 	return userID;
 })()
+
+userid = 303

@@ -34,8 +34,8 @@ script(type="text/x-template")#rew-slide
 		.rew__text.text {{slideInfo.text}}
 		.rew__row
 			.rew__img-wrap
-				img( :src="dataUrl+slideInfo.img" alt="").rew__img
+				img( :src="dataUrl+slideInfo.photo" alt="").rew__img
 				
 			.rew__content
-				h3.rew__name {{slideInfo.name}}
-				h4.rew__position {{slideInfo.position}}
+				h3.rew__name {{slideInfo.author}}
+				h4.rew__position {{slideInfo.occ}}

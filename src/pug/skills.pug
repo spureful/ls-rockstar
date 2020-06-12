@@ -20,7 +20,7 @@ script(type="text/x-template")#skills-list
 		
 script(type="text/x-template")#skills-item
 	.skills__row
-		h3.skills__item-title {{dataSkill.skillsGroup}}
+		h3.skills__item-title {{dataSkill.category}}
 		ul.skills__item-list
 			li.skills__subitem(v-for="skill in dataSkill.skills")
 				skill(

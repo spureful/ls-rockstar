@@ -37,7 +37,7 @@
 
 
 <script>
-	import { mapActions, mapGetters } from 'vuex';
+	import { mapActions, mapGetters, mapState } from 'vuex';
 	import worksTagComp from './worksTag.vue'
 	export default {
 		components: {
@@ -53,9 +53,7 @@
 		props: {
 			workToEdit: Object
 		},
-			computed: {
-		...mapGetters('works', ['getEditModeState'])
-	} , 
+	
 		methods: {
 		...mapActions('works', ['toggleEditMode', 'editWork']),
 			toggleEdit() {
@@ -69,7 +67,7 @@
 				let index = parseInt(this.tags.indexOf(tag));
 				
 				this.tags.splice(index, 1);
-				this.work.techs = this.tags.join(', ')
+				this.workCurrent.techs = this.tags.join(', ')
 			},
 		validForm() {
 				for (let key in this.work) {
@@ -121,7 +119,7 @@
 					}
 					
 					await this.editWork(sendData);
-					this.toggleEdit();
+					this.toggleEditMode(this.getEditModeState);
 
 				} else {alert('empty form')}
 			},
@@ -131,7 +129,11 @@
 		this.workCurrent = this.workToEdit;
 		this.tags = this.workCurrent.techs.split(', ');
 		
-	}
+	}, 
+		computed: {
+		...mapGetters('works', ['getEditModeState'])
+	} , 
+		
 	}
 
 </script>

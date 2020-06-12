@@ -70,19 +70,20 @@ import worksTagComp from './worksTag.vue'
 						return false
 				}		
 		
-		if(!this.work.photo.name) {
-			return false
-	}
+				if(!this.work.photo.name) {
+					return false
+			}
 					
 				return true
 			},
 			
 				handleFile(e) {
-					 const file = e.target.files[0];
+					const file = e.target.files[0];
 			  		this.work.photo = file;
 			  		const img = this.$refs.inputFile;
-				const text = this.$refs.inputFileText;
-				text.textContent = file.name;
+					const text = this.$refs.inputFileText;
+					text.textContent = file.name;
+					
 				
 			  		const reader = new FileReader();
 					return new Promise((resolve, reject) => {
@@ -101,16 +102,20 @@ import worksTagComp from './worksTag.vue'
 				
 				
 				if(this.validForm() ) {
-					 const formData = new FormData();
-					formData.set('title', this.work.title);
-					formData.set('techs', this.work.techs);
-					formData.set('photo', this.work.photo);
-					formData.set('link', this.work.link);
-					formData.set('description', this.work.description);
-					
-					await this.addWork(formData);
-					
-					this.$emit('toggleAdddMode')
+					try {
+						const formData = new FormData();
+						formData.set('title', this.work.title);
+						formData.set('techs', this.work.techs);
+						formData.set('photo', this.work.photo);
+						formData.set('link', this.work.link);
+						formData.set('description', this.work.description);
+
+						await this.addWork(formData);
+
+						this.$emit('toggleAdddMode')
+					} catch (e) {
+						alert('sercer error')
+					}
 //					alert('ok')
 				} else {alert('empty form')}
 			},

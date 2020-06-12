@@ -40,7 +40,7 @@ new Vue({
 		}
 	},
 	created() {
-		fetch('https://raw.githubusercontent.com/spureful/jsno_for_test/master/jsons/skills.json')
+		fetch('https://webdev-api.loftschool.com/categories/303')
 		.then(resp => resp.json())
 		.then(resp => {
 

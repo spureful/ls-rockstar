@@ -4,7 +4,7 @@ const rewSlide = {
 	template: "#rew-slide",
 	data() {
 		return {
-			dataUrl: "https://raw.githubusercontent.com/spureful/jsno_for_test/master/imgs/"
+			dataUrl: "https://webdev-api.loftschool.com/"
 		}
 	},
 	props: {
@@ -44,11 +44,12 @@ new Vue({
 	},
 
 	created() {
-		fetch("https://raw.githubusercontent.com/spureful/jsno_for_test/master/jsons/rew.json")
+		fetch("https://webdev-api.loftschool.com/reviews/303")
 			.then(resp => resp.json())
 			.then(resp => {
 
 				this.slidesInfo = resp;
+		
 
 			})
 	},

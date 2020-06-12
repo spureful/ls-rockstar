@@ -37,9 +37,9 @@
 				
 			}
 		},
-		async created() {
-			 this.tags = await this.work.techs.split(', ');
-			 this.dataWork = await this.work
+		 created() {
+			 this.tags =  this.work.techs.split(', ');
+			 this.dataWork = this.work;
 	}, 		
 		 computed: {
 			...mapGetters('works', ['getEditModeState']),
@@ -47,7 +47,7 @@
 			...mapState('works', {works: state => state.works}),
 				
 //		 fetchWorks() {
-//				this.dataWork = this.work
+//			return	this.dataWork = this.work
 //				
 //				return this.tags = this.dataWork.techs.split(', ');
 //				
@@ -67,7 +67,7 @@
 		},
 		
 		async removeThisWork() {
-			await this.removeWork(this.dataWork.id)
+			await this.removeWork(this.work.id)
 		},
 			
 		

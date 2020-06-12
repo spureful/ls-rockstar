@@ -27,7 +27,7 @@ const paggination = {
 	},
 	data() {
 		return {
-			dataUrl: 'https://raw.githubusercontent.com/spureful/jsno_for_test/master/works/',
+			dataUrl: 'https://webdev-api.loftschool.com/',
 
 		}
 	}
@@ -42,7 +42,7 @@ const bigImg = {
 	},
 	data() {
 		return {
-			dataUrl: 'https://raw.githubusercontent.com/spureful/jsno_for_test/master/works/'
+			dataUrl: 'https://webdev-api.loftschool.com/'
 		}
 	}
 }
@@ -75,7 +75,7 @@ const sideRight = {
 	computed: {
 
 		tagsArray() {
-			return this.currentInfo.skills.split(',');
+			return this.currentInfo.techs.split(',');
 		}
 
 
@@ -99,14 +99,17 @@ new Vue({
 		}
 	},
 	created() {
-		fetch('https://raw.githubusercontent.com/spureful/jsno_for_test/master/jsons/works.json')
+		fetch('https://webdev-api.loftschool.com/works/303')
 			.then(resp => resp.json())
 			.then(resp => {
 
 				this.dataWorks = resp;
 
 				this.currentslide = this.dataWorks[this.currentItem]
-
+			
+				for (let item of this.dataWorks) {
+					item.number = this.dataWorks.indexOf(item) + 1
+				}
 			})
 
 	},

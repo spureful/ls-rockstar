@@ -50,7 +50,7 @@ script(type="text/x-template")#works__right
 	
 	.works__col.works__col-right
 		
-		.works__right-num {{currentInfo.id}}
+		.works__right-num {{currentInfo.number}}
 				
 		.works__right-row
 			//tags
@@ -61,7 +61,7 @@ script(type="text/x-template")#works__right
 			.works__right-col
 				
 				h2.section-title.works__title  {{currentInfo.title}}
-				.works__text.text.text--grey  {{currentInfo.desc}}
+				.works__text.text.text--grey  {{currentInfo.description}}
 				a.works__link(:href="currentInfo.link") Посмотреть сайт
 
 //image
