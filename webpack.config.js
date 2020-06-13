@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
 	const isProductionBuild = argv.mode === "production";
-	const publicPath = '/ls-rockstar/';
+	const publicPath = 'https://spureful.github.io/ls-rockstar/';
 
 	const pcss = {
 		test: /\.(p|post|)css$/,
